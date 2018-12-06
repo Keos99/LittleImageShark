@@ -3,4 +3,25 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <style name="Cold_Theme" parent="android:Theme.Material">
+        <color name="primary_cold">#00bcd4</color>
+        <color name="primary_dark_cold">#00796b</color>
+        <color name="accent_cold">#ff6e40</color>
+    </style>
+
+    <style name="Warm_Theme" parent="android:Theme.Material">
+        <color name="primary_shade_warm">#AED581</color>
+        <color name="primary_light_warm">#F1F8E9</color>
+        <color name="primary_dark_warm">#8BC34A</color>
+        <color name="accent_shade_warm">#B2FF59</color>
+        <color name="accent_light_warm">#CCFF90</color>
+    </style>
+
+    <style name="Orange_Theme" parent="android:Theme.Material">
+        <color name="primary_shade_orange">#FF5722</color>
+        <color name="primary_light_orange">#ffccbc</color>
+        <color name="primary_dark_orange">#e64a19</color>
+        <color name="accent_shade_orange">#03A9F4</color>
+    </style>
 </resources>
