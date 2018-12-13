@@ -13,10 +13,13 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        drawer = findViewById(R.id.drawer_layout);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -36,19 +39,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_main) {
-            this.getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fl_master, MainFragment.newInstance())
-                    .addToBackStack("MainFragment").commit();
-        } else if (id == R.id.nav_choose_color) {
-            this.getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fl_master, ChangeColorShemeFragment.newInstance())
-                    .addToBackStack("ChangeColorShemeFragment").commit();
+        switch (id){
+            case(R.id.nav_main):
+                this.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fl_master, MainFragment.newInstance())
+                        .addToBackStack("MainFragment").commit();
+                break;
+            case (R.id.nav_choose_color):
+                this.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fl_master, ChangeColorShemeFragment.newInstance())
+                        .addToBackStack("ChangeColorShemeFragment").commit();
+                break;
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-
         return true;
     }
 }
