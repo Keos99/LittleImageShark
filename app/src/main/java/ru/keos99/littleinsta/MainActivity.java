@@ -3,6 +3,7 @@ package ru.keos99.littleinsta;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -40,19 +41,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         switch (id){
-            case(R.id.nav_main):
-                this.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fl_master, MainFragment.newInstance())
-                        .addToBackStack("MainFragment").commit();
+            case R.id.nav_main:
+                changeFragmentTo(MainFragment.newInstance());
                 break;
-            case (R.id.nav_choose_color):
-                this.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fl_master, ChangeColorShemeFragment.newInstance())
-                        .addToBackStack("ChangeColorShemeFragment").commit();
+            case R.id.nav_choose_color:
+                changeFragmentTo(ChangeColorShemeFragment.newInstance());
                 break;
         }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void changeFragmentTo (Fragment newInstance){
+        this.getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_master, newInstance)
+                .addToBackStack("MainFragment").commit();
     }
 }
