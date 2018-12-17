@@ -11,6 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import ru.keos99.littleinsta.Fragments.ChangeColorShemeFragment.ChangeColorShemeFragment;
+import ru.keos99.littleinsta.Fragments.MainFragment.MainFragment;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
