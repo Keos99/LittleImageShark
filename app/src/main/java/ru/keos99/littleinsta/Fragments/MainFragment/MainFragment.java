@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,7 +19,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +35,6 @@ public class MainFragment extends Fragment implements ActivityCompat.OnRequestPe
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_CODE_PERMISSION_CAMERA = 100;
-    static final int REQUEST_CODE_PERMISSION_WRITE_EXTERNAL_STORAGE = 110;
 
     public static Fragment newInstance(){
         MainFragment fragment = new MainFragment();
@@ -77,13 +74,8 @@ public class MainFragment extends Fragment implements ActivityCompat.OnRequestPe
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            saveBitmapIcon((Bitmap) extras.get("data"));
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
         }
-    }
-
-    public void saveBitmapIcon(Bitmap bitmap){
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "savedBitmap.png");
-
     }
 
     private void dispatchTakePictureIntent() {
@@ -94,13 +86,11 @@ public class MainFragment extends Fragment implements ActivityCompat.OnRequestPe
     }
 
     private void checkPremisionCamera(){
-        int permissionStatusCamera = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA);
-        int premissionStatus = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (permissionStatusCamera == PackageManager.PERMISSION_GRANTED && premissionStatus == PackageManager.PERMISSION_GRANTED) {
+        int permissionStatus = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA);
+        if (permissionStatus == PackageManager.PERMISSION_GRANTED) {
             dispatchTakePictureIntent();
         } else {
             ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CAMERA}, REQUEST_CODE_PERMISSION_CAMERA);
-            ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_PERMISSION_WRITE_EXTERNAL_STORAGE);
         }
     }
 

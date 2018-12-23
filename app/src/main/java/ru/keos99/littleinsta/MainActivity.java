@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        changeFragmentTo(MainFragment.newInstance());
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -51,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 changeFragmentTo(ChangeColorShemeFragment.newInstance());
                 break;
         }
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -59,6 +59,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void changeFragmentTo (Fragment newInstance){
         this.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_master, newInstance)
-                .addToBackStack("MainFragment").commit();
+                .addToBackStack("Fragment").commit();
     }
 }
