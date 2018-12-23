@@ -30,11 +30,13 @@ public class PhotoRVAdapter extends RecyclerView.Adapter<PhotoRVAdapter.VievHold
     public void onBindViewHolder(@NonNull VievHolder vievHolder, int position) {
         PhotoListItem photoListItem = photoListItems.get(position);
         vievHolder.photoViev.setImageResource(photoListItem.getImageID());
+        /*
         if (photoListItem.getFavorites()){
             vievHolder.favoriteViev.setImageResource(R.drawable.hearton);
         } else {
             vievHolder.favoriteViev.setImageResource(R.drawable.heart);
         }
+        */
     }
 
     @Override
@@ -44,12 +46,12 @@ public class PhotoRVAdapter extends RecyclerView.Adapter<PhotoRVAdapter.VievHold
 
     public static class VievHolder extends RecyclerView.ViewHolder {
         public ImageView photoViev;
-        public ImageView favoriteViev;
+        //public ImageView favoriteViev;
 
         public VievHolder(@NonNull View itemView) {
             super(itemView);
             photoViev = itemView.findViewById(R.id.iv_photo);
-            favoriteViev = itemView.findViewById(R.id.iv_favorites);
+            //favoriteViev = itemView.findViewById(R.id.iv_favorites);
         }
     }
 }
