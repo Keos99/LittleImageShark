@@ -1,23 +1,22 @@
 package ru.keos99.littleinsta.Fragments.MainFragment;
 
+import android.support.v4.app.Fragment;
+
 public class PhotoListItem {
+    Fragment fragment;
     private int imageID;
-    private Boolean isFavorite;
 
-    public PhotoListItem(int imageID){
-        this.imageID = imageID;
-    }
 
-    public PhotoListItem(int imageID, boolean isFavorite){
+    public PhotoListItem(int imageID,Fragment fragment){
         this.imageID = imageID;
-        this.isFavorite = isFavorite;
+        this.fragment = fragment;
     }
 
     public int getImageID() {
         return imageID;
     }
 
-    public Boolean getFavorites() {
-        return isFavorite;
+    public Fragment getFragment() {
+        return fragment;
     }
 }

@@ -5,24 +5,30 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="Cold_Theme" parent="android:Theme.Material">
+
+    <style name="Cold_Theme" parent="AppTheme.NoActionBar">
         <item name="colorPrimary">@color/primary_cold</item>
         <item name="colorPrimaryDark">@color/primary_dark_cold</item>
         <item name="colorAccent">@color/accent_cold</item>
     </style>
-    <style name="Warm_Theme" parent="android:Theme.Material">
+
+    <style name="Warm_Theme" parent="AppTheme.NoActionBar">
         <item name="colorPrimary">@color/primary_shade_warm</item>
         <item name="colorPrimaryDark">@color/primary_dark_warm</item>
         <item name="colorAccent">@color/accent_shade_warm</item>
     </style>
-    <style name="Orange_Theme" parent="android:Theme.Material">
+
+    <style name="Orange_Theme" parent="AppTheme.NoActionBar">
         <item name="colorPrimary">@color/primary_shade_orange</item>
         <item name="colorPrimaryDark">@color/primary_dark_orange</item>
         <item name="colorAccent">@color/accent_shade_orange</item>
+        <item name="android:background">@color/black</item>
     </style>
+
     <style name="SensorTextNumbers">
         <item name="android:textSize">80sp</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <style name="AppTheme.NoActionBar" parent="AppTheme">
