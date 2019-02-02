@@ -15,5 +15,6 @@
     <color name="primary_light_orange">#ffccbc</color>
     <color name="primary_dark_orange">#e64a19</color>
     <color name="accent_shade_orange">#03A9F4</color>
+    <color name="black">#000000</color>
 
 </resources>

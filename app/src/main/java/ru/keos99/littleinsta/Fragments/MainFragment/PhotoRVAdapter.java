@@ -1,17 +1,22 @@
 package ru.keos99.littleinsta.Fragments.MainFragment;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import java.util.List;
+
+import ru.keos99.littleinsta.App;
+import ru.keos99.littleinsta.Fragments.PhotoFragment.PhotoFragment;
 import ru.keos99.littleinsta.R;
 
 public class PhotoRVAdapter extends RecyclerView.Adapter<PhotoRVAdapter.VievHolder> {
 
     private List<PhotoListItem> photoListItems;
+    private Fragment fragment;
 
     public PhotoRVAdapter (List<PhotoListItem> photoListItems){
         this.photoListItems = photoListItems;
@@ -28,15 +33,8 @@ public class PhotoRVAdapter extends RecyclerView.Adapter<PhotoRVAdapter.VievHold
 
     @Override
     public void onBindViewHolder(@NonNull VievHolder vievHolder, int position) {
-        PhotoListItem photoListItem = photoListItems.get(position);
-        vievHolder.photoViev.setImageResource(photoListItem.getImageID());
-        /*
-        if (photoListItem.getFavorites()){
-            vievHolder.favoriteViev.setImageResource(R.drawable.hearton);
-        } else {
-            vievHolder.favoriteViev.setImageResource(R.drawable.heart);
-        }
-        */
+        vievHolder.bind(position,vievHolder);
+
     }
 
     @Override
@@ -44,14 +42,24 @@ public class PhotoRVAdapter extends RecyclerView.Adapter<PhotoRVAdapter.VievHold
         return photoListItems.size();
     }
 
-    public static class VievHolder extends RecyclerView.ViewHolder {
+    public class VievHolder extends RecyclerView.ViewHolder {
         public ImageView photoViev;
-        //public ImageView favoriteViev;
 
         public VievHolder(@NonNull View itemView) {
             super(itemView);
             photoViev = itemView.findViewById(R.id.iv_photo);
-            //favoriteViev = itemView.findViewById(R.id.iv_favorites);
+        }
+
+        public void bind (final int position,VievHolder vievHolder ){
+            final PhotoListItem item = photoListItems.get(position);
+            fragment = item.getFragment();
+            vievHolder.photoViev.setImageResource(item.getImageID());
+            itemView.setOnClickListener(v -> fragment.getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fl_master,PhotoFragment.newInstance())
+                    .addToBackStack("Fragment")
+                    .commit());
         }
     }
 }
