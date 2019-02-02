@@ -34,7 +34,6 @@ public class PhotoRVAdapter extends RecyclerView.Adapter<PhotoRVAdapter.VievHold
     @Override
     public void onBindViewHolder(@NonNull VievHolder vievHolder, int position) {
         vievHolder.bind(position,vievHolder);
-
     }
 
     @Override

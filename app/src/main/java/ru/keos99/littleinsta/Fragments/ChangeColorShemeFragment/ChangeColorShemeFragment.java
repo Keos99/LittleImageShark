@@ -18,7 +18,7 @@ public class ChangeColorShemeFragment extends Fragment {
     private Button button2;
     private Button button3;
     private Button button4;
-    private  View view;
+    private View view;
 
     public static Fragment newInstance(){
         ChangeColorShemeFragment fragment = new ChangeColorShemeFragment();
@@ -31,16 +31,21 @@ public class ChangeColorShemeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_change_color_sheme, null);
 
         initUI();
-        initClickListeners();
+        addButtonChangeThemeListener();
 
         return view;
     }
 
     public void onClickListener(Button button, int theme){
-        button.setOnClickListener(v -> App.getInstance().setTheme(theme));
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                App.getInstance().setTheme(theme);
+            }
+        });
     }
 
-    public void initClickListeners(){
+    public void addButtonChangeThemeListener(){
         onClickListener(button1,R.style.Cold_Theme);
         onClickListener(button2,R.style.Orange_Theme);
         onClickListener(button3,R.style.Warm_Theme);
