@@ -109,17 +109,14 @@ public class MainFragment extends Fragment implements ActivityCompat.OnRequestPe
 
     public void setRandomList(){
         int imgID;
-        boolean favorite;
         photoListItems = new ArrayList<PhotoListItem>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             if (i%2 == 0){
                 imgID = R.drawable.android;
-                //favorite = true;
-            } else {
+                } else {
                 imgID = R.drawable.android2;
-                //favorite = false;
             }
-            photoListItems.add(new PhotoListItem(imgID));
+            photoListItems.add(new PhotoListItem(imgID,this));
         }
     }
 }
