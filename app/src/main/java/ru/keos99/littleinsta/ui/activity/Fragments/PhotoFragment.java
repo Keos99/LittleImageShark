@@ -1,4 +1,4 @@
-package ru.keos99.littleinsta.Fragments.PhotoFragment;
+package ru.keos99.littleinsta.ui.activity.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,10 +10,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.arellomobile.mvp.MvpAppCompatFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+
 import ru.keos99.littleinsta.R;
+import ru.keos99.littleinsta.mvp.Presenter.fragments.PhotoFragmentPresenter;
+import ru.keos99.littleinsta.mvp.view.fragments.PhotoFragmentView;
 
-public class PhotoFragment extends Fragment {
+public class PhotoFragment extends MvpAppCompatFragment implements PhotoFragmentView {
 
+    @InjectPresenter
+    PhotoFragmentPresenter photoFragmentPresenter;
     private View view;
     private ImageView iVPhotoDetails;
     private ImageView iVFavorite;
@@ -26,7 +33,8 @@ public class PhotoFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_photo,null);
         initUI();
 

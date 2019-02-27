@@ -1,4 +1,4 @@
-package ru.keos99.littleinsta.Fragments.MainFragment;
+package ru.keos99.littleinsta.ui.activity.Fragments;
 
 import android.Manifest;
 import android.content.Intent;
@@ -19,15 +19,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.arellomobile.mvp.MvpAppCompatFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.keos99.littleinsta.mvp.Presenter.fragments.MainFragmentPresenter;
+import ru.keos99.littleinsta.mvp.model.entity.PhotoListItem;
 import ru.keos99.littleinsta.R;
+import ru.keos99.littleinsta.mvp.view.MainView;
+import ru.keos99.littleinsta.mvp.view.fragments.MainFragmentView;
+import ru.keos99.littleinsta.ui.adapter.PhotoRVAdapter;
 
 import static android.app.Activity.RESULT_OK;
 
-public class MainFragment extends Fragment implements ActivityCompat.OnRequestPermissionsResultCallback {
+public class MainFragment extends MvpAppCompatFragment implements ActivityCompat.OnRequestPermissionsResultCallback, MainFragmentView {
 
+    @InjectPresenter
+    MainFragmentPresenter mainFragmentPresenter;
+
+    private View view;
     private FloatingActionButton floatingActionButton;
     private RecyclerView recyclerView;
     private PhotoRVAdapter photoRVAdapter;
@@ -44,7 +56,7 @@ public class MainFragment extends Fragment implements ActivityCompat.OnRequestPe
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main,null);
+        view = inflater.inflate(R.layout.fragment_main,null);
         floatingActionButton = view.findViewById(R.id.fab);
         fabSetOnClickListener();
 
@@ -60,14 +72,7 @@ public class MainFragment extends Fragment implements ActivityCompat.OnRequestPe
     }
 
     public void fabSetOnClickListener (){
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkPremisionCamera();
-                Snackbar.make(view, "Фото добавлено", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        floatingActionButton.setOnClickListener(view -> checkPremisionCamera());
     }
 
     @Override

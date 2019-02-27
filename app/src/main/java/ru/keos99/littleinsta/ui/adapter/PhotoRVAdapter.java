@@ -1,4 +1,4 @@
-package ru.keos99.littleinsta.Fragments.MainFragment;
+package ru.keos99.littleinsta.ui.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import java.util.List;
 
-import ru.keos99.littleinsta.App;
-import ru.keos99.littleinsta.Fragments.PhotoFragment.PhotoFragment;
+import ru.keos99.littleinsta.mvp.model.entity.PhotoListItem;
+import ru.keos99.littleinsta.ui.activity.Fragments.PhotoFragment;
 import ru.keos99.littleinsta.R;
 
 public class PhotoRVAdapter extends RecyclerView.Adapter<PhotoRVAdapter.VievHolder> {
@@ -53,6 +53,7 @@ public class PhotoRVAdapter extends RecyclerView.Adapter<PhotoRVAdapter.VievHold
             final PhotoListItem item = photoListItems.get(position);
             fragment = item.getFragment();
             vievHolder.photoViev.setImageResource(item.getImageID());
+
             itemView.setOnClickListener(v -> fragment.getActivity()
                     .getSupportFragmentManager()
                     .beginTransaction()
