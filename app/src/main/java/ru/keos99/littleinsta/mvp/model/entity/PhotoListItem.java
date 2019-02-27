@@ -1,4 +1,4 @@
-package ru.keos99.littleinsta.Fragments.MainFragment;
+package ru.keos99.littleinsta.mvp.model.entity;
 
 import android.support.v4.app.Fragment;
 

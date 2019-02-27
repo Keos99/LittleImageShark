@@ -1,4 +1,4 @@
-package ru.keos99.littleinsta;
+package ru.keos99.littleinsta.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,17 +7,25 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
-import ru.keos99.littleinsta.Fragments.ChangeColorShemeFragment.ChangeColorShemeFragment;
-import ru.keos99.littleinsta.Fragments.MainFragment.MainFragment;
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+
+import ru.keos99.littleinsta.mvp.Presenter.MainViewPresenter;
+import ru.keos99.littleinsta.mvp.view.MainView;
+import ru.keos99.littleinsta.ui.activity.Fragments.MainFragment;
+import ru.keos99.littleinsta.R;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends MvpAppCompatActivity implements MainView, NavigationView.OnNavigationItemSelectedListener {
 
-    DrawerLayout drawer;
+    @InjectPresenter
+    MainViewPresenter mainViewPresenter;
+    private DrawerLayout drawer;
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +55,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id){
             case R.id.nav_main:
                 changeFragmentTo(MainFragment.newInstance());
-                break;
-            case R.id.nav_choose_color:
-                changeFragmentTo(ChangeColorShemeFragment.newInstance());
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
