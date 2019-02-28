@@ -16,6 +16,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import ru.keos99.littleinsta.mvp.Presenter.MainViewPresenter;
 import ru.keos99.littleinsta.mvp.view.MainView;
+import ru.keos99.littleinsta.ui.activity.Fragments.AuthorizationFragment;
 import ru.keos99.littleinsta.ui.activity.Fragments.MainFragment;
 import ru.keos99.littleinsta.R;
 
@@ -44,7 +45,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView, Navi
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        changeFragmentTo(MainFragment.newInstance());
+        changeFragmentTo(AuthorizationFragment.newInstance());
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
