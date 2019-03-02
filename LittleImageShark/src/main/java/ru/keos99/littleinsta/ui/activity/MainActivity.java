@@ -16,6 +16,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import ru.keos99.littleinsta.mvp.Presenter.MainViewPresenter;
 import ru.keos99.littleinsta.mvp.view.MainView;
+import ru.keos99.littleinsta.ui.activity.Fragments.AboutUserFragment;
 import ru.keos99.littleinsta.ui.activity.Fragments.AuthorizationFragment;
 import ru.keos99.littleinsta.ui.activity.Fragments.MainFragment;
 import ru.keos99.littleinsta.R;

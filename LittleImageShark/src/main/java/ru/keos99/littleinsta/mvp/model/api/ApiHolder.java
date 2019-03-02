@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiHolder {
     private static ApiHolder instance = new ApiHolder();
-    private UserDataSource userDataSource;
+    UserDataSource userDataSource;
 
     public static ApiHolder getInstance() {
         if (instance == null){
@@ -20,19 +20,15 @@ public class ApiHolder {
     }
 
     private ApiHolder() {
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .create();
-
         userDataSource = new Retrofit.Builder()
-                .baseUrl("https://api.imageshack.com/v2/user")
+                .baseUrl("https://api.imageshack.com/v2/user/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()))
                 .build()
                 .create(UserDataSource.class);
     }
 
-    public static UserDataSource getUserDataSource() {
-        return instance.userDataSource;
+    public static UserDataSource getApi() {
+        return getInstance().userDataSource;
     }
 }
