@@ -4,4 +4,5 @@ import com.arellomobile.mvp.MvpView;
 
 public interface AboutUserFragmentView extends MvpView {
     void setUserNameText (String username);
+    void getAuthToken();
 }
