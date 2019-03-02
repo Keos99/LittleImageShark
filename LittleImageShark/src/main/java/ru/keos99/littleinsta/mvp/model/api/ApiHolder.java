@@ -22,7 +22,6 @@ public class ApiHolder {
     private ApiHolder() {
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .excludeFieldsWithoutExposeAnnotation()
                 .create();
 
         userDataSource = new Retrofit.Builder()
@@ -33,7 +32,7 @@ public class ApiHolder {
                 .create(UserDataSource.class);
     }
 
-    public UserDataSource getUserDataSource() {
-        return userDataSource;
+    public static UserDataSource getUserDataSource() {
+        return instance.userDataSource;
     }
 }
