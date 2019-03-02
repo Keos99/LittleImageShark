@@ -26,7 +26,6 @@ public class AuthorizationFragment extends MvpAppCompatFragment implements Autho
     private EditText passwordEditText;
     private Button authorizationOkButton;
 
-
     private View view;
 
     public static Fragment newInstance(){
